@@ -27,6 +27,12 @@ module.exports = {
                 answer: 'París',
                 createdAt: new Date(),
                 updatedAt: new Date()
+            },
+             {
+                question: 'Capital de León',
+                answer: 'Cuadros',
+                createdAt: new Date(),
+                updatedAt: new Date()
             }
         ]);
     },
