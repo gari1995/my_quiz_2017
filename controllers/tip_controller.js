@@ -37,9 +37,12 @@ exports.new = function (req, res, next) {
 // POST /quizzes/:quizId/tips
 exports.create = function (req, res, next) {
 
+    var authorId = req.session.user && req.session.userId || 0;
+
     var tip = models.Tip.build(
         {
             text: req.body.text,
+            AuthorId: authorId,
             QuizId: req.quiz.id
         });
 
@@ -96,3 +99,25 @@ exports.destroy = function (req, res, next) {
         next(error);
     });
 };
+
+//Middleware pra practica53
+
+exports.adminOrAuthor = function(req, res, next){
+    var Admin = req.session.user.isAdmin;
+    var Author = req.session.AuthorId = req.session.user.id;
+
+    if(Admin || Author){
+        next();
+    } else{
+        console.log('Error, el usuario no registrado no es ni el autor de la pista ni el admin');
+    }
+};
+
+
+
+
+
+
+
+
+

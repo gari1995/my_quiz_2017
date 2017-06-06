@@ -10,6 +10,8 @@
                     (session.user && (session.user.isAdmin || (quizAuthorId && quizAuthorId === session.user.id)))) { %>
 
                 <%= tip.text %>
+                <% var authorTip = tip.AuthorId ? tip.Author.username : "Desconocido" %>
+                <span id="author"><small>(puesta por <%= authorTip %>) </small></span>
 
             <% } %>
 
